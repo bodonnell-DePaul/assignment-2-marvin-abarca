@@ -1,0 +1,59 @@
+
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #343a40; /* Dark color for better readability */
+}
+
+.todo-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background for the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.add-todo-form {
+  margin-bottom: 20px;
+}
+
+.add-todo-form .form-control {
+  border-radius: 5px; /* Rounded input fields */
+}
+
+.add-todo-form .btn {
+  margin-top: 10px; /* Space above the button */
+}
+
+.list-group {
+  display: grid; /* Use CSS grid */
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 10px; /* Space between columns */
+}
+
+.list-group-item {
+  border-radius: 5px; /* Rounded corners for list items */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1; /* Light gray on hover */
+}
+
+.tab-content {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background for tab content */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+h5 {
+  margin-top: 0;
+  color: #495057; /* Darker color for headings */
+}
