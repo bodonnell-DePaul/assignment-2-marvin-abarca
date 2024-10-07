@@ -1,7 +1,7 @@
-
+// src/ToDoList.js
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Tab, ListGroup } from 'react-bootstrap';
-import todoItems from './todoItems'; 
+import todoItems from './todoItems'; // Your todoItems data file
 import './index.css';
 
 const getColorVariant = (dueDate) => {
@@ -18,6 +18,21 @@ const getColorVariant = (dueDate) => {
 
 const ToDoList = () => {
     const [todos, setTodos] = useState(todoItems);
+    const [newTitle, setNewTitle] = useState('');
+    const [newDueDate, setNewDueDate] = useState('');
+
+    const handleAddTodo = () => {
+        if (newTitle && newDueDate) {
+            const newTodo = {
+                title: newTitle,
+                description: 'New ToDo Description', // Default description
+                dueDate: newDueDate,
+            };
+            setTodos([...todos, newTodo]);
+            setNewTitle('');
+            setNewDueDate('');
+        }
+    };
 
     return (
         <Container className="todo-list">
@@ -27,17 +42,26 @@ const ToDoList = () => {
                     <Col>
                         <Form.Group controlId="formTitle">
                             <Form.Label>Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter title" />
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Enter title" 
+                                value={newTitle}
+                                onChange={(e) => setNewTitle(e.target.value)} 
+                            />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group controlId="formDueDate">
                             <Form.Label>Due Date</Form.Label>
-                            <Form.Control type="date" />
+                            <Form.Control 
+                                type="date" 
+                                value={newDueDate}
+                                onChange={(e) => setNewDueDate(e.target.value)} 
+                            />
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Button variant="primary" className="mt-4">Add Todo</Button>
+                        <Button variant="primary" className="mt-4" onClick={handleAddTodo}>Add Todo</Button>
                     </Col>
                 </Row>
             </Form>
@@ -52,7 +76,7 @@ const ToDoList = () => {
                                     eventKey={item.title}
                                     variant={getColorVariant(item.dueDate)}
                                     action
-                                    href={`#${item.title}`} 
+                                    href={`#${item.title}`} // Link to the corresponding Tab.Pane
                                 >
                                     {item.title}
                                 </ListGroup.Item>
